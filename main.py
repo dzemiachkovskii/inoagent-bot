@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 
 @bot.message_handler()
 def main(m):
-    x = m.reply_to_message.message_id
+    x = m.reply_to_message.message_id if hasattr(m.reply_to_message, "message_id") else "None"
     bot.send_message(m.chat.id, x)
     bot.delete_message(m.chat.id, m.message_id)
 
