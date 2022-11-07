@@ -14,8 +14,9 @@ logger.setLevel(logging.DEBUG)
 
 @bot.message_handler()
 def main(m):
-    bot.send_message(m.chat.id, m)
-    bot.send_message(m.chat.id, m.reply_to_message.message_id)
+    x = bot.reply_to_message.message.id
+    bot.send_message(m.chat.id, x)
+    bot.delete_message(m.chat.id, m.message_id)
 
 
 @server.route(f'/{BOT_TOKEN}', methods=['POST'])
