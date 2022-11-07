@@ -15,7 +15,7 @@ bot.message_handler(content_types=['text'])
 
 
 def main(m):
-    bot.send_message(m.chat.id, m)
+    bot.send_message(m.chat.id, str(m))
 
 
 @server.route(f'/{BOT_TOKEN}', methods=['POST'])
