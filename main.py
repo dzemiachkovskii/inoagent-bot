@@ -11,11 +11,11 @@ server = Flask(__name__)
 logger = telebot.logger
 logger.setLevel(logging.DEBUG)
 
-bot.message_handler(content_types=['text'])
 
-
+@bot.message_handler(content_types=['text'])
 def main(m):
     bot.send_message(m.chat.id, str(m))
+    bot.send_message(m.chat.id, m)
 
 
 @server.route(f'/{BOT_TOKEN}', methods=['POST'])
