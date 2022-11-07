@@ -18,7 +18,7 @@ def main(m):
     bot.send_message(m.chat.id, m)
 
 
-@server.route('//' + BOT_TOKEN, methods=['POST'])
+@server.route(f'/{BOT_TOKEN}', methods=['POST'])
 def redirect_message():
     json_string = request.get_data().decode("utf-8")
     update = types.Update.de_json(json_string)
