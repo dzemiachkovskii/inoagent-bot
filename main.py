@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 
 @bot.message_handler()
 def main(m):
-    x = bot.reply_to_message.message.id
+    x = m.reply_to_message.message_id
     bot.send_message(m.chat.id, x)
     bot.delete_message(m.chat.id, m.message_id)
 
