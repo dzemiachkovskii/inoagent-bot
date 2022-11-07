@@ -12,10 +12,10 @@ logger = telebot.logger
 logger.setLevel(logging.DEBUG)
 
 
-@bot.message_handler(content_types=['text'])
+@bot.message_handler()
 def main(m):
-    bot.send_message(m.chat.id, str(m))
     bot.send_message(m.chat.id, m)
+    bot.send_message(m.chat.id, m.reply_to_message.message_id)
 
 
 @server.route(f'/{BOT_TOKEN}', methods=['POST'])
