@@ -5,7 +5,7 @@ import telebot
 from flask import Flask, request
 from telebot import TeleBot, types
 
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = os.environ.get('INO_BOT_TOKEN')
 bot = TeleBot(BOT_TOKEN)
 server = Flask(__name__)
 logger = telebot.logger
@@ -28,7 +28,7 @@ def redirect_message():
     return "!", 200
 
 
-APP_URL = os.environ.get('APP_URL')
+APP_URL = os.environ.get('INO_APP_URL')
 if __name__ == "__main__":
     bot.remove_webhook()
     bot.set_webhook(url=APP_URL)
