@@ -1,15 +1,16 @@
-import logging
 import os
-from message import inoagent_message
-import telebot
-from flask import Flask, request
 from telebot import TeleBot, types
+from flask import Flask, request
+from message import inoagent_message
 
 BOT_TOKEN = os.environ.get('INO_BOT_TOKEN')
 bot = TeleBot(BOT_TOKEN)
 server = Flask(__name__)
-logger = telebot.logger
-logger.setLevel(logging.DEBUG)
+WEBHOOK_LISTEN = "0.0.0.0"
+WEBHOOK_HOST = "45.141.102.1"
+WEBHOOK_PORT = 8443
+WEBHOOK_URL_BASE = "https://%s:%s" % (WEBHOOK_HOST, WEBHOOK_PORT)
+WEBHOOK_URL_PATH = "/%s/" % BOT_TOKEN
 
 
 @bot.message_handler()
@@ -28,8 +29,7 @@ def redirect_message():
     return "!", 200
 
 
-APP_URL = os.environ.get('INO_APP_URL')
 if __name__ == "__main__":
     bot.remove_webhook()
-    bot.set_webhook(url=APP_URL)
-    server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    bot.set_webhook(url=WEBHOOK_URL_BASE + WEBHOOK_URL_PATH)
+    server.run(host=WEBHOOK_LISTEN, port=WEBHOOK_PORT)
