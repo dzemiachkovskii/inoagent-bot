@@ -14,4 +14,5 @@ def main(m):
         bot.reply_to(inoagent, inoagent_message)
 
 
+bot.delete_webhook()
 bot.infinity_polling()
