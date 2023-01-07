@@ -2,13 +2,8 @@ import os
 from telebot import TeleBot
 from message import inoagent_message
 
-try:
-    BOT_TOKEN = os.environ.get('INO_BOT_TOKEN')
-    if BOT_TOKEN is None:
-        raise Exception("NO TOKEN")
-    bot = TeleBot(BOT_TOKEN)
-except:
-    raise Exception(f"TOKEN == {BOT_TOKEN}")
+BOT_TOKEN = os.environ['INO_BOT_TOKEN']
+bot = TeleBot(BOT_TOKEN)
 
 
 @bot.message_handler()
