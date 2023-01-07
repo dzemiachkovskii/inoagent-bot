@@ -1,8 +1,9 @@
 import os
 from telebot import TeleBot
 from message import inoagent_message
+from TOKEN import BOT_TOKEN
 
-BOT_TOKEN = os.getenv('INO_BOT_TOKEN')
+
 bot = TeleBot(BOT_TOKEN)
 
 
