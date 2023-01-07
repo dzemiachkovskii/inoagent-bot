@@ -4,9 +4,11 @@ from message import inoagent_message
 
 try:
     BOT_TOKEN = os.environ.get('INO_BOT_TOKEN')
+    if BOT_TOKEN is None:
+        raise Exception("NO TOKEN")
     bot = TeleBot(BOT_TOKEN)
-except Exception as exc:
-    raise RuntimeError(f"TOKEN == {BOT_TOKEN}") from exc
+except:
+    raise Exception(f"TOKEN == {BOT_TOKEN}")
 
 
 @bot.message_handler()
